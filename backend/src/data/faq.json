@@ -1,0 +1,47 @@
+[
+  {
+    "keywords": ["room rent", "room rent cap", "room limit"],
+    "question": "What is a room rent cap?",
+    "answer": "A room rent cap limits the per-day room charge your insurer will pay — usually a percentage of the sum insured (commonly 1% for normal rooms, 2% for ICU) or a fixed rupee amount. If your room costs more, the excess plus a proportionate share of associated charges may be deducted."
+  },
+  {
+    "keywords": ["sub limit", "sub-limit", "procedure cap"],
+    "question": "What is a sub-limit?",
+    "answer": "A sub-limit is a cap on how much the policy pays for a specific procedure or treatment (for example, ₹40,000 for cataract surgery), regardless of the actual bill or your total sum insured."
+  },
+  {
+    "keywords": ["waiting period", "pre-existing", "ped"],
+    "question": "What is a waiting period?",
+    "answer": "A waiting period is the time you must hold the policy before certain conditions are covered. Under IRDAI's Master Circular on Health Insurance (2024), the pre-existing disease waiting period is capped at 36 months, and specific disease/procedure waiting periods cannot exceed 36 months. Separately, after 60 continuous months (5 years) of coverage — the moratorium — a claim cannot be denied for non-disclosure except in cases of proven fraud."
+  },
+  {
+    "keywords": ["co-pay", "copay", "co payment"],
+    "question": "What is a co-pay?",
+    "answer": "A co-pay is the share of the approved claim you pay yourself — for example 10% or 20%. Many policies apply a higher co-pay (often 20%) for senior citizens aged 60 and above, or for treatment in higher-tier cities."
+  },
+  {
+    "keywords": ["deductible", "excess"],
+    "question": "What is a deductible?",
+    "answer": "A deductible is a fixed amount subtracted from every claim before the insurer pays. If your deductible is ₹10,000, that amount is removed from the eligible payout."
+  },
+  {
+    "keywords": ["exclusion", "not covered", "excluded"],
+    "question": "What are exclusions?",
+    "answer": "Exclusions are treatments or conditions the policy will never pay for — for example cosmetic surgery, self-inflicted injury, or certain experimental treatments. If your procedure is excluded, the claim is denied outright."
+  },
+  {
+    "keywords": ["grievance", "dispute", "complaint", "ombudsman"],
+    "question": "How do I dispute a denied claim?",
+    "answer": "You can escalate within the insurer's grievance cell first, then to the IRDAI Bima Bharosa portal, and finally to the Insurance Ombudsman. SecureShield can generate a formal grievance letter citing relevant IRDAI regulations and Ombudsman/NCDRC precedents to strengthen your case."
+  },
+  {
+    "keywords": ["city tier", "tier 1", "tier 2", "metro"],
+    "question": "How does my city affect my claim?",
+    "answer": "IRDAI classifies cities into tiers. Some policies set room-rent caps and co-pays by city tier — Tier 1 metros (Mumbai, Delhi, Bengaluru, etc.) often allow higher room limits than Tier 2/3 towns. SecureShield's city_tier_classifier applies the correct cap automatically."
+  },
+  {
+    "keywords": ["moratorium", "5 year", "five year"],
+    "question": "What is the 5-year moratorium?",
+    "answer": "Under IRDAI's Master Circular on Health Insurance (2024), after 60 continuous months (5 years) of coverage — including portability and migration — an insurer cannot reject a claim on the grounds of non-disclosure or pre-existing disease, except for established fraud. This is the moratorium period (reduced from 8 years)."
+  }
+]

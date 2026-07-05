@@ -1,0 +1,8 @@
+.claude
+node_modules/
+dist/
+.env
+backend/reports/
+*.log
+.DS_Store
+.stack.generated.yml

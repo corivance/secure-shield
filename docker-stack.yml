@@ -1,0 +1,39 @@
+# Swarm stack for SecureShield's OWN infra (deployed with `docker stack deploy`).
+#
+# Dedicated host ports (27018 / 6380) are used on purpose so SecureShield never
+# collides with — or depends on — a host-installed mongod/redis-server already on
+# the standard 27017 / 6379. The named volume persists data across redeploys, and
+# `docker stack deploy` is idempotent, so re-running reuses this same stack.
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo:7
+    # host:27018 → container:27017 (no auth — this is SecureShield's private DB)
+    ports:
+      - target: 27017
+        published: 27018
+        protocol: tcp
+        mode: host
+    volumes:
+      - mongo_data:/data/db
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
+
+  redis:
+    image: redis:7-alpine
+    # host:6380 → container:6379
+    ports:
+      - target: 6379
+        published: 6380
+        protocol: tcp
+        mode: host
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
+
+volumes:
+  mongo_data:
