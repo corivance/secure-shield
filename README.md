@@ -131,19 +131,6 @@ hallucinate and are fully reproducible. See `backend/test/decisionEngine.test.js
 
 ---
 
-## Notes on deviations from FEATURES.md
-
-- **Database:** CLAUDE.MD mandates **MongoDB** (non-negotiable). FEATURES.md mentions
-  *pgvector*; precedent semantic search is therefore implemented with **in-app cosine
-  similarity** over hashed embeddings (`backend/src/utils/embeddings.js`). Swap in a
-  real embedding API by populating `Precedent.embedding` at seed time.
-- **LLM providers** degrade gracefully: with no keys configured, agents fall back to
-  deterministic templates so the whole app remains usable offline. Add real keys via
-  the `ai_key_configs` collection (seeded as disabled slots) to activate failover.
-- The precedent corpus ships with a curated representative set; expand
-  `backend/src/data/precedents.js` toward the full 49 rulings as needed.
-
----
 
 ## Tests
 
