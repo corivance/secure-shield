@@ -4,8 +4,6 @@ import { LANGUAGES } from '../../i18n/languages.js';
 import { setLanguage } from '../../i18n/index.js';
 import { Icon } from './Icon.jsx';
 
-// Language picker. variant="bare" suits light surfaces (auth pages); the default
-// suits the app top bar. Shows each language in its own script so users find theirs.
 export const LanguageSwitcher = ({ variant = 'default', align = 'right' }) => {
   const { i18n } = useTranslation();
   const [open, setOpen] = useState(false);
@@ -33,8 +31,8 @@ export const LanguageSwitcher = ({ variant = 'default', align = 'right' }) => {
         onClick={() => setOpen((o) => !o)}
         className={`flex items-center gap-2 rounded-lg text-sm transition-colors ${
           variant === 'bare'
-            ? 'px-3 py-1.5 text-charcoal hover:text-ink hover:bg-paleblue/40'
-            : 'px-2.5 py-1.5 text-charcoal hover:text-ink hover:bg-paleblue/40'
+            ? 'px-3 py-1.5 text-slate-500 hover:text-slate-700 hover:bg-slate-50'
+            : 'px-2.5 py-1.5 text-slate-500 hover:text-slate-700 hover:bg-slate-50'
         }`}
         aria-label="Change language"
       >
@@ -44,7 +42,7 @@ export const LanguageSwitcher = ({ variant = 'default', align = 'right' }) => {
 
       {open && (
         <ul
-          className={`absolute z-50 mt-2 w-48 max-h-80 overflow-y-auto rounded-xl border border-gray/60 bg-white shadow-soft py-1 ${
+          className={`absolute z-50 mt-2 w-48 max-h-80 overflow-y-auto rounded-xl border border-slate-200 bg-white shadow-lg py-1 ${
             align === 'right' ? 'right-0' : 'left-0'
           }`}
         >
@@ -56,12 +54,12 @@ export const LanguageSwitcher = ({ variant = 'default', align = 'right' }) => {
                   type="button"
                   onClick={() => choose(l.code)}
                   className={`w-full flex items-center justify-between gap-3 px-3.5 py-2 text-sm text-left transition-colors ${
-                    active ? 'bg-paleblue/40 text-ink' : 'text-charcoal hover:bg-paleblue/25 hover:text-ink'
+                    active ? 'bg-indigo-50 text-indigo-600' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
                   }`}
                 >
                   <span className="font-medium">{l.native}</span>
-                  <span className="text-[11px] text-charcoal/55">{l.label}</span>
-                  {active && <Icon name="check" className="h-3.5 w-3.5 text-softgreen shrink-0" />}
+                  <span className="text-[11px] text-slate-400">{l.label}</span>
+                  {active && <Icon name="check" className="h-3.5 w-3.5 text-indigo-600 shrink-0" />}
                 </button>
               </li>
             );

@@ -30,13 +30,14 @@ const DashboardPage = () => {
         subtitle={t('dashboard.subtitle')}
       />
 
-      <div className="grid lg:grid-cols-12 gap-5">
-        {/* Coverage hero */}
-        <section className="ss-card p-7 lg:col-span-7 flex flex-col sm:flex-row items-center gap-7">
+      {/* Bento Grid Container */}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-min">
+        {/* Coverage Ring - Focal Point: Spans 7 cols, 2 rows */}
+        <section className="bg-white border border-slate-200 rounded-2xl p-7 md:col-span-7 md:row-span-2 flex flex-col sm:flex-row items-center gap-7 shadow-card">
           <CoverageRing percent={avgCoverage} verdict="partial" size={150} />
           <div className="flex-1 w-full">
             <p className="ss-eyebrow">{t('dashboard.portfolioCoverage')}</p>
-            <p className="ss-display text-[30px] text-ink leading-tight mt-1">
+            <p className="text-2xl font-semibold text-slate-900 leading-tight mt-1">
               {history.length === 1
                 ? t('dashboard.checksRun_one', { count: history.length })
                 : t('dashboard.checksRun_other', { count: history.length })}
@@ -49,15 +50,24 @@ const DashboardPage = () => {
           </div>
         </section>
 
-        {/* System info */}
-        <section className="lg:col-span-5">
+        {/* System Info Card: Spans 5 cols, 1 row */}
+        <section className="md:col-span-5">
           <SystemInfoCard info={info} />
         </section>
-      </div>
 
-      <div>
-        <p className="ss-eyebrow mb-3">{t('dashboard.quickActions')}</p>
-        <QuickActions />
+        {/* Stats Row: 3 individual stat tiles spanning varying widths */}
+        <section className="md:col-span-3">
+          <StatTile label={t('verdict.approved')} value={approved} accent="softgreen" />
+        </section>
+        <section className="md:col-span-2">
+          <StatTile label={t('verdict.partial')} value={partial} accent="beige" />
+        </section>
+
+        {/* Quick Actions Section: Spans 12 cols */}
+        <section className="md:col-span-12">
+          <p className="ss-eyebrow mb-3">{t('dashboard.quickActions')}</p>
+          <QuickActions />
+        </section>
       </div>
     </div>
   );

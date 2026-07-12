@@ -7,8 +7,6 @@ import { Icon } from '../common/Icon.jsx';
 import { useRegulationUpdates, useInsertCirculars } from '../../hooks/useAdmin.js';
 import { timeAgo } from '../../lib/time.js';
 
-// Select circulars and bulk-insert them — the modal stays open so you can keep
-// adding without re-syncing. New health circulars are also auto-added on sync.
 export const RegulationUpdatesModal = ({ onClose }) => {
   const { t } = useTranslation();
   const { data, isFetching, error, refetch } = useRegulationUpdates(true);
@@ -17,7 +15,6 @@ export const RegulationUpdatesModal = ({ onClose }) => {
   const [selected, setSelected] = useState(() => new Set());
   const [added, setAdded] = useState(() => new Set());
 
-  // When a fresh sync arrives, reset local selection/added tracking.
   useEffect(() => {
     setSelected(new Set());
     setAdded(new Set());
@@ -79,41 +76,41 @@ export const RegulationUpdatesModal = ({ onClose }) => {
       ) : error ? (
         <ErrorBanner error={error} />
       ) : data?.ok === false ? (
-        <div className="rounded-xl border border-taupe/40 bg-beige/15 px-4 py-3 text-sm text-taupe">
+        <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
           {data.error || t('admin.regulations.couldNotFetch')}
         </div>
       ) : data?.ok ? (
         <div className="space-y-3">
           <ErrorBanner error={insert.error} />
           {data.inserted > 0 && (
-            <div className="rounded-xl border border-softgreen/40 bg-softgreen/10 px-4 py-2.5 text-sm text-softgreen">
+            <div className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-2.5 text-sm text-emerald-700">
               {t('admin.regulations.autoAdded', { count: data.inserted })}
             </div>
           )}
 
           <div className="flex items-center justify-between gap-3">
-            <label className="flex items-center gap-2 ss-eyebrow text-charcoal/70 cursor-pointer">
-              <input type="checkbox" checked={allSelected} onChange={toggleAll} disabled={!selectable.length} />
+            <label className="flex items-center gap-2 ss-eyebrow cursor-pointer">
+              <input type="checkbox" checked={allSelected} onChange={toggleAll} disabled={!selectable.length} className="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" />
               {t('admin.regulations.selectAll', { count: selectable.length })}
             </label>
-            <span className="font-mono text-[10.5px] text-charcoal/50 shrink-0">
+            <span className="font-mono text-[10.5px] text-slate-400 shrink-0">
               {t('admin.regulations.found', { count: items.length })}{data.fetchedAt ? ` · ${timeAgo(data.fetchedAt)}` : ''}
             </span>
           </div>
 
-          <ul className="rounded-xl border border-gray/50 divide-y divide-gray/40 overflow-hidden">
+          <ul className="rounded-xl border border-slate-200 divide-y divide-slate-100 overflow-hidden">
             {items.map((it, i) => {
               const done = inLibrary(it);
               return (
-                <li key={i} className="flex items-start gap-2.5 px-3.5 py-2.5 hover:bg-paleblue/40 transition-colors">
+                <li key={i} className="flex items-start gap-2.5 px-3.5 py-2.5 hover:bg-slate-50 transition-colors">
                   {done ? (
                     <span className="mt-0.5 shrink-0">
-                      {it.health ? <Icon name="pulse" className="h-4 w-4 text-softgreen" /> : <span className="text-charcoal/40">•</span>}
+                      {it.health ? <Icon name="pulse" className="h-4 w-4 text-emerald-600" /> : <span className="text-slate-300">•</span>}
                     </span>
                   ) : (
                     <input
                       type="checkbox"
-                      className="mt-1 shrink-0"
+                      className="mt-1 shrink-0 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
                       checked={selected.has(it.url)}
                       onChange={() => toggle(it.url)}
                     />
@@ -122,24 +119,24 @@ export const RegulationUpdatesModal = ({ onClose }) => {
                     href={it.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex-1 text-sm text-ink hover:text-taupe leading-snug break-words underline decoration-gray/0 hover:decoration-gray underline-offset-2"
+                    className="flex-1 text-sm text-slate-700 hover:text-indigo-600 leading-snug break-words underline decoration-slate-200 hover:decoration-indigo-300 underline-offset-2"
                   >
-                    {it.title} <span className="text-charcoal/40">↗</span>
+                    {it.title} <span className="text-slate-300">↗</span>
                   </a>
                   {it.health && (
-                    <span className="ss-tag shrink-0 text-softgreen border-softgreen/40 hidden sm:inline-flex">
+                    <span className="ss-tag shrink-0 text-emerald-600 bg-emerald-50 hidden sm:inline-flex">
                       <Icon name="pulse" className="h-3 w-3" /> {t('admin.regulations.health')}
                     </span>
                   )}
-                  {done && <span className="ss-tag shrink-0 text-softgreen border-softgreen/40">{t('admin.regulations.added')}</span>}
+                  {done && <span className="ss-tag shrink-0 text-emerald-600 bg-emerald-50">{t('admin.regulations.added')}</span>}
                 </li>
               );
             })}
           </ul>
 
-          <p className="text-[11px] leading-relaxed text-charcoal/70">
-            <span className="font-mono uppercase tracking-eyebrow">{t('admin.regulations.noteLabel')}</span> {t('admin.regulations.noteBefore')}{' '}
-            <strong>{t('admin.regulations.insertSelectedShort')}</strong> {t('admin.regulations.noteAfter')}
+          <p className="text-[11px] leading-relaxed text-slate-400">
+            <span className="font-medium uppercase tracking-wider">{t('admin.regulations.noteLabel')}</span> {t('admin.regulations.noteBefore')}{' '}
+            <strong className="text-slate-700">{t('admin.regulations.insertSelectedShort')}</strong> {t('admin.regulations.noteAfter')}
           </p>
         </div>
       ) : null}

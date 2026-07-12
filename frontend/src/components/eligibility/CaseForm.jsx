@@ -23,14 +23,13 @@ const Field = ({ label, required, children }) => {
   return (
     <div>
       <label className="ss-label">
-        {label} {required && <span className="text-taupe">*</span>}
+        {label} {required && <span className="text-red-500">*</span>}
       </label>
       {children}
     </div>
   );
 }
 
-// Controlled case-input form. Pure UI — submission handled by the parent page hook.
 export const CaseForm = ({ policies = [], onSubmit, submitting }) => {
   const { t } = useTranslation();
   const [form, setForm] = useState(EMPTY);
@@ -42,7 +41,7 @@ export const CaseForm = ({ policies = [], onSubmit, submitting }) => {
   };
 
   return (
-    <form onSubmit={submit} className="ss-card p-6 space-y-4">
+    <form onSubmit={submit} className="bg-white border border-slate-200 rounded-2xl p-6 space-y-4 shadow-card">
       <div className="grid sm:grid-cols-2 gap-4">
         <Field label={t('eligibility.fieldPolicy')} required>
           <select className="ss-input" value={form.policyId} onChange={set('policyId')} required>

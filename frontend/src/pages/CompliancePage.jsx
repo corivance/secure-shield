@@ -32,18 +32,18 @@ const CompliancePage = () => {
       <PageHeader eyebrow={t('compliance.eyebrow')} title={t('compliance.title')} subtitle={t('compliance.subtitle')} />
 
       {showMachineNote && (
-        <div className="ss-card p-4 mb-6 flex items-start gap-2.5 border border-beige/60 bg-beige/15">
-          <Icon name="globe" className="h-4 w-4 mt-0.5 shrink-0 text-taupe" />
-          <p className="text-sm text-charcoal">{t('compliance.machineNote')}</p>
+        <div className="bg-white border border-amber-200 rounded-2xl p-4 mb-6 flex items-start gap-2.5">
+          <Icon name="globe" className="h-4 w-4 mt-0.5 shrink-0 text-amber-600" />
+          <p className="text-sm text-slate-500">{t('compliance.machineNote')}</p>
         </div>
       )}
 
       {fw && (
-        <div className="ss-card p-5 mb-6 flex flex-wrap items-center gap-x-6 gap-y-1">
+        <div className="bg-white border border-slate-200 rounded-2xl p-5 mb-6 flex flex-wrap items-center gap-x-6 gap-y-1 shadow-card">
           <span className="ss-eyebrow">{t('compliance.framework')}</span>
-          <span className="text-sm text-ink">{fw.label}</span>
-          {fw.circularRef && <span className="font-mono text-[11px] text-charcoal/70">{fw.circularRef}</span>}
-          {fw.lastReviewed && <span className="font-mono text-[11px] text-charcoal/70">{t('compliance.reviewed', { date: fw.lastReviewed })}</span>}
+          <span className="text-sm text-slate-900">{fw.label}</span>
+          {fw.circularRef && <span className="font-mono text-[11px] text-slate-400">{fw.circularRef}</span>}
+          {fw.lastReviewed && <span className="font-mono text-[11px] text-slate-400">{t('compliance.reviewed', { date: fw.lastReviewed })}</span>}
         </div>
       )}
 
@@ -52,20 +52,20 @@ const CompliancePage = () => {
       ) : regulations.length ? (
         <div className="space-y-3">
           {regulations.map((r) => (
-            <div key={r.id || r.title} className="ss-card p-5 flex items-start justify-between gap-4">
+            <div key={r.id || r.title} className="bg-white border border-slate-200 rounded-2xl p-5 flex items-start justify-between gap-4 shadow-card">
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
-                  <p className="ss-display text-[17px] text-ink">{r.title}</p>
-                  <span className={`ss-tag ${r.category === 'info' ? '' : 'text-taupe border-taupe/40'}`}>{catLabel(r.category)}</span>
+                  <p className="text-base font-semibold text-slate-900">{r.title}</p>
+                  <span className={`ss-tag ${r.category === 'info' ? '' : 'bg-indigo-50 text-indigo-600'}`}>{catLabel(r.category)}</span>
                 </div>
-                {r.ref && <p className="font-mono text-[11px] text-charcoal/70 mt-1">{r.ref}</p>}
-                {r.text && <p className="text-sm text-charcoal mt-1.5 leading-relaxed line-clamp-2">{r.text}</p>}
+                {r.ref && <p className="font-mono text-[11px] text-slate-400 mt-1">{r.ref}</p>}
+                {r.text && <p className="text-sm text-slate-500 mt-1.5 leading-relaxed line-clamp-2">{r.text}</p>}
                 <div className="flex flex-wrap items-center gap-2 mt-2">
                   {(r.appliesTo || []).map((tag) => (
-                    <span key={tag} className="font-mono text-[10.5px] text-charcoal/70">#{tag}</span>
+                    <span key={tag} className="font-mono text-[10.5px] text-slate-400">#{tag}</span>
                   ))}
                   {r.source && (
-                    <a className="font-mono text-[10.5px] text-taupe hover:text-ink underline break-all" href={r.source} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>
+                    <a className="font-mono text-[10.5px] text-indigo-600 hover:text-indigo-700 underline break-all" href={r.source} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>
                       {t('common.source')} ↗
                     </a>
                   )}
@@ -86,7 +86,7 @@ const CompliancePage = () => {
         <EmptyState title={t('compliance.noProvisions')} subtitle={t('compliance.noProvisionsSub')} />
       )}
 
-      <div className="ss-card p-5 mt-6">
+      <div className="bg-white border border-slate-200 rounded-2xl p-5 mt-6 shadow-card">
         <Disclaimer text={fw?.disclaimer} />
       </div>
 

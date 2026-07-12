@@ -21,7 +21,7 @@ const SignupPage = () => {
     <AuthCard
       title={t('auth.createAccountTitle')}
       subtitle={t('signup.subtitle')}
-      footer={<>{t('auth.haveAccount')} <Link className="text-taupe font-medium" to="/login">{t('auth.signIn')}</Link></>}
+      footer={<>{t('auth.haveAccount')} <Link className="text-indigo-600 font-medium hover:text-indigo-700" to="/login">{t('auth.signIn')}</Link></>}
     >
       <form onSubmit={submit} className="space-y-4">
         <ErrorBanner error={signup.error} />
@@ -36,7 +36,7 @@ const SignupPage = () => {
         <div>
           <label className="ss-label">{t('auth.password')}</label>
           <input className="ss-input" type="password" minLength={8} value={form.password} onChange={set('password')} required />
-          <p className="text-[11px] text-charcoal mt-1">{t('signup.passwordHint')}</p>
+          <p className="text-[11px] text-slate-400 mt-1">{t('signup.passwordHint')}</p>
         </div>
         <button className="ss-btn-primary w-full" disabled={signup.isPending}>
           {signup.isPending ? t('signup.creating') : t('signup.createAccount')}

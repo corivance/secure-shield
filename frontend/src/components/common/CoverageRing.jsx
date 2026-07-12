@@ -1,8 +1,6 @@
-// CoverageRing — an instrument-style gauge for the % of a claim covered.
-// 270° sweep with a hairline tick track, in palette colours only.
 import { useTranslation } from 'react-i18next';
 
-const COLORS = { approved: '#879A77', partial: '#C9AD93', denied: '#554940' };
+const COLORS = { approved: '#10B981', partial: '#F59E0B', denied: '#EF4444' };
 
 export const CoverageRing = ({ percent = 0, verdict = 'partial', size = 140 }) => {
   const { t } = useTranslation();
@@ -12,29 +10,25 @@ export const CoverageRing = ({ percent = 0, verdict = 'partial', size = 140 }) =
   const cx = size / 2;
   const cy = size / 2;
   const circ = 2 * Math.PI * r;
-  const sweep = 0.75; // 270° arc
+  const sweep = 0.75;
   const arc = circ * sweep;
   const offset = arc - (pct / 100) * arc;
-  const color = COLORS[verdict] || '#554940';
-  // Rotate so the gap sits at the bottom (start at 135°).
+  const color = COLORS[verdict] || '#64748B';
   const rotation = 135;
 
   return (
     <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} className="shrink-0">
-      {/* Track */}
       <circle
         cx={cx}
         cy={cy}
         r={r}
         fill="none"
-        stroke="#C5C6C7"
-        strokeOpacity="0.55"
+        stroke="#E2E8F0"
         strokeWidth={stroke}
         strokeLinecap="round"
         strokeDasharray={`${arc} ${circ}`}
         transform={`rotate(${rotation} ${cx} ${cy})`}
       />
-      {/* Value */}
       <circle
         cx={cx}
         cy={cy}
@@ -53,9 +47,9 @@ export const CoverageRing = ({ percent = 0, verdict = 'partial', size = 140 }) =
         y="47%"
         textAnchor="middle"
         dominantBaseline="middle"
-        className="fill-ink font-display"
+        className="fill-slate-900 font-display"
         fontSize="30"
-        fontWeight="500"
+        fontWeight="600"
       >
         {pct}%
       </text>
@@ -64,7 +58,7 @@ export const CoverageRing = ({ percent = 0, verdict = 'partial', size = 140 }) =
         y="64%"
         textAnchor="middle"
         dominantBaseline="middle"
-        fill="#73787C"
+        fill="#94A3B8"
         fontSize="9.5"
         letterSpacing="3"
         style={{ textTransform: 'uppercase' }}

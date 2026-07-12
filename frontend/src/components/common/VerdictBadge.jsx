@@ -3,9 +3,9 @@ import { VERDICT_META } from '../../constants/navigation.js';
 import { Icon } from './Icon.jsx';
 
 const CLASS = {
-  approved: 'bg-softgreen/15 text-softgreen border-softgreen/40',
-  partial: 'bg-beige/25 text-taupe border-beige/50',
-  denied: 'bg-taupe/10 text-taupe border-taupe/40',
+  approved: 'bg-emerald-50 text-emerald-700 border border-emerald-200',
+  partial: 'bg-amber-50 text-amber-700 border border-amber-200',
+  denied: 'bg-red-50 text-red-700 border border-red-200',
 };
 
 export const VerdictBadge = ({ verdict }) => {
@@ -14,7 +14,7 @@ export const VerdictBadge = ({ verdict }) => {
   const key = VERDICT_META[verdict] ? verdict : 'partial';
   return (
     <span
-      className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] ${
+      className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium ${
         CLASS[verdict] || CLASS.partial
       }`}
     >

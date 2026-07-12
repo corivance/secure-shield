@@ -8,14 +8,14 @@ import { COMPLIANCE } from '../../constants/compliance.js';
 export const Topbar = () => {
   const { t } = useTranslation();
   return (
-    <header className="h-16 sticky top-0 z-10 flex items-center gap-4 px-5 md:px-8 border-b border-gray/50 bg-white/55 backdrop-blur-2xl">
-      <p className="md:hidden ss-display text-lg text-ink flex items-center gap-2">
-        <Icon name="shield" className="h-5 w-5 text-taupe" /> SecureShield
+    <header className="h-16 sticky top-0 z-10 flex items-center gap-4 px-6 md:px-8 border-b border-slate-200 bg-white">
+      <p className="md:hidden text-base font-semibold text-slate-900 flex items-center gap-2">
+        <Icon name="shield" className="h-5 w-5 text-indigo-600" /> SecureShield
       </p>
 
       <div className="hidden md:flex items-center gap-2">
         <span className="ss-dot" />
-        <span className="font-mono text-[10.5px] uppercase tracking-eyebrow text-charcoal">
+        <span className="text-[10px] font-medium text-slate-400 uppercase tracking-wider">
           {t('topbar.status', { compliance: COMPLIANCE.short, reviewed: COMPLIANCE.reviewed })}
         </span>
       </div>

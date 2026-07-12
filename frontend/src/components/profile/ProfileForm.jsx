@@ -21,7 +21,7 @@ export const ProfileForm = () => {
   };
 
   return (
-    <form onSubmit={submit} className="ss-card p-6">
+    <form onSubmit={submit} className="bg-white border border-slate-200 rounded-2xl p-6 shadow-card">
       <p className="ss-eyebrow mb-4">{t('profile.profile')}</p>
       <ErrorBanner error={update.error} />
       <div className="space-y-4 mt-1">
@@ -39,7 +39,7 @@ export const ProfileForm = () => {
           {update.isPending ? t('common.saving') : t('common.saveChanges')}
         </button>
         {update.isSuccess && !dirty && (
-          <span className="font-mono text-[11px] uppercase tracking-eyebrow text-softgreen">{t('profile.saved')}</span>
+          <span className="text-[11px] font-medium text-emerald-600 uppercase tracking-wider">{t('profile.saved')}</span>
         )}
       </div>
     </form>

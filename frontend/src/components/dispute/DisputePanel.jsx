@@ -19,11 +19,11 @@ export const DisputePanel = ({ dispute, onDownload, downloading }) => {
     : dispute.status;
   return (
     <div className="space-y-5">
-      <div className="ss-card p-6 flex items-center justify-between gap-4">
+      <div className="bg-white border border-slate-200 rounded-2xl p-6 flex items-center justify-between gap-4 shadow-card">
         <div>
           <p className="ss-eyebrow mb-1.5">{t('disputes.pipeline')}</p>
-          <p className="ss-display text-lg text-ink flex items-center gap-2">
-            <Icon name={statusIcon} className="h-4 w-4 text-taupe" />
+          <p className="text-lg font-semibold text-slate-900 flex items-center gap-2">
+            <Icon name={statusIcon} className="h-4 w-4 text-indigo-600" />
             {statusLabel}
           </p>
         </div>
@@ -35,15 +35,15 @@ export const DisputePanel = ({ dispute, onDownload, downloading }) => {
       </div>
 
       {dispute.error && (
-        <div className="rounded-xl border border-taupe/40 bg-beige/15 text-taupe px-4 py-3 text-sm">{dispute.error}</div>
+        <div className="rounded-xl border border-red-200 bg-red-50 text-red-700 px-4 py-3 text-sm">{dispute.error}</div>
       )}
 
       <PrecedentList precedents={dispute.precedents} />
 
       {dispute.letter && (
-        <div className="ss-card p-6">
+        <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-card">
           <p className="ss-eyebrow mb-3 flex items-center gap-2"><Icon name="pen" className="h-3.5 w-3.5" /> {t('disputes.letterHeading')}</p>
-          <pre className="text-sm text-charcoal whitespace-pre-wrap font-sans leading-relaxed">{dispute.letter}</pre>
+          <pre className="text-sm text-slate-500 whitespace-pre-wrap font-sans leading-relaxed">{dispute.letter}</pre>
         </div>
       )}
 

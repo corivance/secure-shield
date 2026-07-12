@@ -12,22 +12,22 @@ export const ArchitectureSteps = () => {
   return (
     <div className="space-y-4">
       {AGENTS.map((a) => (
-        <div key={a.n} className={`ss-card p-6 ${a.highlight ? 'border-softgreen/50' : ''}`}>
+        <div key={a.n} className={`bg-white border rounded-2xl p-6 shadow-card ${a.highlight ? 'border-emerald-200' : 'border-slate-200'}`}>
           <div className="flex items-start gap-5">
             <div
-              className={`grid h-11 w-11 shrink-0 place-items-center rounded-2xl font-mono text-sm ${
-                a.highlight ? 'bg-softgreen text-white' : 'bg-paleblue/60 text-taupe border border-gray/50'
+              className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl font-mono text-sm ${
+                a.highlight ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-600 border border-slate-200'
               }`}
             >
               {a.n}
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <p className="ss-display text-[19px] text-ink">{a.name}</p>
-                {a.highlight && <span className="ss-tag text-softgreen border-softgreen/40">{t('howItWorks.zeroLlm')}</span>}
+                <p className="text-base font-semibold text-slate-900">{a.name}</p>
+                {a.highlight && <span className="ss-tag text-emerald-600 bg-emerald-50">{t('howItWorks.zeroLlm')}</span>}
               </div>
-              <p className="text-sm text-charcoal mt-1.5 leading-relaxed">{a.desc}</p>
-              <p className="font-mono text-[11px] text-charcoal/60 mt-3 leading-relaxed">{a.tools}</p>
+              <p className="text-sm text-slate-500 mt-1.5 leading-relaxed">{a.desc}</p>
+              <p className="font-mono text-[11px] text-slate-400 mt-3 leading-relaxed">{a.tools}</p>
             </div>
           </div>
         </div>

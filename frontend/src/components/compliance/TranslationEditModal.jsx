@@ -4,8 +4,6 @@ import { Modal } from '../common/Modal.jsx';
 import { ErrorBanner } from '../common/ErrorBanner.jsx';
 import { useSaveTranslation } from '../../hooks/useCompliance.js';
 
-// Admin-only: correct the machine translation of a provision in the current
-// language. Saved as an authoritative override that won't be re-machined.
 export const TranslationEditModal = ({ regulation, lang, onClose }) => {
   const { t } = useTranslation();
   const save = useSaveTranslation();

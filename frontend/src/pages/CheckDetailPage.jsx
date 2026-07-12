@@ -14,7 +14,7 @@ const CheckDetailPage = () => {
   const dispute = useStartDispute();
 
   if (isLoading) return <Spinner />;
-  if (!check) return <p className="text-charcoal">{t('checkDetail.notFound')}</p>;
+  if (!check) return <p className="text-slate-500">{t('checkDetail.notFound')}</p>;
 
   const onDispute = () =>
     dispute.mutate(check._id, { onSuccess: (d) => navigate(`/disputes?id=${d._id || d.id}`) });

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Icon } from '../common/Icon.jsx';
 
-// Reads a question (and optional image, base64-encoded for OCR). Sending handled by parent.
 export const ChatComposer = ({ onSend, sending }) => {
   const { t } = useTranslation();
   const [question, setQuestion] = useState('');
@@ -30,13 +29,13 @@ export const ChatComposer = ({ onSend, sending }) => {
   };
 
   return (
-    <form onSubmit={submit} className="ss-card p-3 flex items-end gap-2">
+    <form onSubmit={submit} className="bg-white border border-slate-200 rounded-2xl p-3 flex items-end gap-2 shadow-card">
       <label className="ss-btn-secondary cursor-pointer py-2 px-3" title={t('chat.attachTitle')}>
         <Icon name="paperclip" className="h-4 w-4" />
         <input type="file" accept="image/*" className="hidden" onChange={(e) => pickImage(e.target.files?.[0])} />
       </label>
       <div className="flex-1">
-        {imageName && <p className="text-[11px] text-charcoal mb-1">{t('chat.attached', { name: imageName })}</p>}
+        {imageName && <p className="text-[11px] text-slate-400 mb-1">{t('chat.attached', { name: imageName })}</p>}
         <textarea
           className="ss-input resize-none"
           rows={1}

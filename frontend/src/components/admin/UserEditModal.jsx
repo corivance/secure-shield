@@ -51,15 +51,15 @@ export const UserEditModal = ({ user, roles = [], plans = [], onClose }) => {
             </select>
           </div>
         </div>
-        <label className="flex items-start gap-2 text-sm text-charcoal">
+        <label className="flex items-start gap-2 text-sm text-slate-500">
           <input
             type="checkbox"
-            className="mt-1"
+            className="mt-1 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
             checked={form.canUseAdminKeys}
             onChange={(e) => setForm((f) => ({ ...f, canUseAdminKeys: e.target.checked }))}
           />
           <span>
-            {t('admin.users.allowSharedBefore')} <strong className="text-ink">{t('admin.users.allowSharedStrong')}</strong> {t('admin.users.allowSharedAfter')}
+            {t('admin.users.allowSharedBefore')} <strong className="text-slate-900">{t('admin.users.allowSharedStrong')}</strong> {t('admin.users.allowSharedAfter')}
           </span>
         </label>
 

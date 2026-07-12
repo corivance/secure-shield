@@ -74,11 +74,10 @@ const ComparePage = () => {
       />
 
       <div className="space-y-8">
-        {/* Policy selection */}
         <section>
           <div
             className={`mb-3 flex items-start gap-2.5 rounded-xl border px-4 py-2.5 text-sm ${
-              llmReady ? 'border-softgreen/40 bg-softgreen/10 text-softgreen' : 'border-beige/50 bg-beige/15 text-taupe'
+              llmReady ? 'border-emerald-200 bg-emerald-50 text-emerald-700' : 'border-amber-200 bg-amber-50 text-amber-700'
             }`}
           >
             <Icon name={llmReady ? 'check' : 'alert'} className="h-4 w-4 mt-0.5 shrink-0" />
@@ -99,11 +98,11 @@ const ComparePage = () => {
             onDelete={onDeletePolicy}
           />
           <ErrorBanner error={upload.error || run.error} />
-          <p className="text-xs text-charcoal/60 mt-2">{t('compare.editHint')}</p>
+          <p className="text-xs text-slate-400 mt-2">{t('compare.editHint')}</p>
           {uploaded && !upload.isPending && (
             <div
               className={`mt-3 rounded-xl border px-4 py-2.5 text-sm ${
-                ruleCount > 0 ? 'border-softgreen/40 bg-softgreen/10 text-softgreen' : 'border-beige/50 bg-beige/15 text-taupe'
+                ruleCount > 0 ? 'border-emerald-200 bg-emerald-50 text-emerald-700' : 'border-amber-200 bg-amber-50 text-amber-700'
               }`}
             >
               {ruleCount > 0 ? (
@@ -133,7 +132,6 @@ const ComparePage = () => {
           )}
         </section>
 
-        {/* Result */}
         {result && (
           <section>
             <div className="flex items-center justify-between mb-4">
@@ -150,7 +148,6 @@ const ComparePage = () => {
           </section>
         )}
 
-        {/* History */}
         {!result && (
           <section>
             <p className="ss-eyebrow mb-3">{t('compare.history')}</p>
@@ -161,14 +158,14 @@ const ComparePage = () => {
                 {comparisons.map((comp) => (
                   <div
                     key={comp._id}
-                    className="ss-card ss-interactive p-4 flex items-center justify-between gap-4 cursor-pointer"
+                    className="bg-white border border-slate-200 rounded-2xl p-4 flex items-center justify-between gap-4 cursor-pointer hover:border-slate-300 hover:shadow-soft transition-all duration-200"
                     onClick={() => setResult(comp)}
                   >
                     <div className="min-w-0">
-                      <p className="ss-display text-sm text-ink truncate">
+                      <p className="text-sm font-semibold text-slate-900 truncate">
                         {comp.policies.map((p) => p.planName).join(' vs ')}
                       </p>
-                      <p className="text-xs text-charcoal mt-0.5">
+                      <p className="text-xs text-slate-500 mt-0.5">
                         {comp.policyCount} policies · {new Date(comp.createdAt).toLocaleDateString()}
                       </p>
                     </div>
@@ -176,7 +173,7 @@ const ComparePage = () => {
                       <button
                         type="button"
                         onClick={(e) => { e.stopPropagation(); onDeleteHistory(comp); }}
-                        className="grid h-7 w-7 place-items-center rounded-lg text-charcoal/50 hover:text-taupe hover:bg-paleblue/50 transition-colors"
+                        className="grid h-7 w-7 place-items-center rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 transition-colors"
                         title={t('common.delete')}
                       >
                         <Icon name="trash" className="h-4 w-4" />

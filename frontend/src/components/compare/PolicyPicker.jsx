@@ -28,23 +28,23 @@ export const PolicyPicker = ({ policies, selected, onToggle, uploading, onUpload
             return (
               <div
                 key={p._id}
-                className={`ss-card text-left p-4 transition-all duration-200 relative ${
+                className={`bg-white border rounded-2xl text-left p-4 transition-all duration-200 relative ${
                   isSelected
-                    ? 'ring-2 ring-softgreen border-softgreen/60 bg-softgreen/5'
+                    ? 'ring-2 ring-indigo-500 border-indigo-300 bg-indigo-50/50'
                     : disabled
-                    ? 'opacity-50 cursor-not-allowed border-gray/40'
-                    : 'border-gray/40 hover:border-charcoal/60 cursor-pointer'
+                    ? 'opacity-50 cursor-not-allowed border-slate-200'
+                    : 'border-slate-200 hover:border-slate-300 cursor-pointer'
                 }`}
                 onClick={() => !disabled && onToggle(p._id)}
               >
                 <div className="flex items-start justify-between gap-2">
                   <div className="min-w-0">
-                    <p className="ss-display text-sm text-ink truncate">{p.planName}</p>
-                    <p className="text-xs text-charcoal mt-0.5 truncate">{p.insurer}</p>
+                    <p className="text-sm font-semibold text-slate-900 truncate">{p.planName}</p>
+                    <p className="text-xs text-slate-500 mt-0.5 truncate">{p.insurer}</p>
                   </div>
                   <div className="flex items-center gap-1 shrink-0">
                     {isSelected && (
-                      <span className="grid h-5 w-5 place-items-center rounded-full bg-softgreen text-white">
+                      <span className="grid h-5 w-5 place-items-center rounded-full bg-indigo-600 text-white">
                         <Icon name="check" className="h-3 w-3" />
                       </span>
                     )}
@@ -52,7 +52,7 @@ export const PolicyPicker = ({ policies, selected, onToggle, uploading, onUpload
                       <button
                         type="button"
                         onClick={(e) => { e.stopPropagation(); onDelete(p); }}
-                        className="grid h-6 w-6 place-items-center rounded-lg text-charcoal/40 hover:text-taupe hover:bg-paleblue/50 transition-colors"
+                        className="grid h-6 w-6 place-items-center rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 transition-colors"
                         title={t('common.delete')}
                       >
                         <Icon name="trash" className="h-3.5 w-3.5" />
@@ -63,17 +63,17 @@ export const PolicyPicker = ({ policies, selected, onToggle, uploading, onUpload
                 <div className="flex items-center gap-4 mt-3">
                   <div>
                     <p className="ss-eyebrow">{t('policies.sumInsured')}</p>
-                    <p className="font-mono text-xs text-ink tabular-nums mt-0.5">{money(p.sumInsured)}</p>
+                    <p className="font-mono text-xs text-slate-900 tabular-nums mt-0.5">{money(p.sumInsured)}</p>
                   </div>
                   <div>
                     <p className="ss-eyebrow">{t('policies.rules')}</p>
-                    <p className="font-mono text-xs text-ink tabular-nums mt-0.5">{(p.rules || []).length}</p>
+                    <p className="font-mono text-xs text-slate-900 tabular-nums mt-0.5">{(p.rules || []).length}</p>
                   </div>
                   <div className="ml-auto flex items-center gap-2">
                     <Link
                       to={`/policies/${p._id}`}
                       onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-eyebrow text-charcoal/50 hover:text-taupe transition-colors"
+                      className="inline-flex items-center gap-1 text-[10px] font-medium text-slate-400 hover:text-indigo-600 transition-colors"
                       title={t('common.view')}
                     >
                       {t('common.view')} <span className="transition-transform duration-200 hover:translate-x-0.5">→</span>
@@ -81,7 +81,7 @@ export const PolicyPicker = ({ policies, selected, onToggle, uploading, onUpload
                     <Link
                       to={`/policies/${p._id}`}
                       onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-eyebrow text-charcoal/50 hover:text-taupe transition-colors"
+                      className="inline-flex items-center gap-1 text-[10px] font-medium text-slate-400 hover:text-indigo-600 transition-colors"
                       title={t('policyDetail.editRules')}
                     >
                       <Icon name="pen" className="h-3 w-3" /> {t('common.edit')}
@@ -93,12 +93,12 @@ export const PolicyPicker = ({ policies, selected, onToggle, uploading, onUpload
           })}
         </div>
       ) : (
-        <p className="text-sm text-charcoal">{t('compare.noPoliciesHint')}</p>
+        <p className="text-sm text-slate-500">{t('compare.noPoliciesHint')}</p>
       )}
 
       <div
-        className={`relative ss-card border-2 border-dashed p-6 text-center cursor-pointer transition-all duration-300 overflow-hidden ${
-          dragging ? 'border-taupe bg-paleblue/40' : 'border-gray/70 hover:border-charcoal/50'
+        className={`relative bg-white border-2 border-dashed rounded-2xl p-6 text-center cursor-pointer transition-all duration-200 overflow-hidden ${
+          dragging ? 'border-indigo-400 bg-indigo-50' : 'border-slate-200 hover:border-slate-300'
         }`}
         onClick={() => inputRef.current?.click()}
         onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
@@ -106,13 +106,13 @@ export const PolicyPicker = ({ policies, selected, onToggle, uploading, onUpload
         onDrop={(e) => { e.preventDefault(); setDragging(false); handleFile(e.dataTransfer.files?.[0]); }}
       >
         {uploading && (
-          <span className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-softgreen/15 to-transparent animate-sweep" />
+          <span className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-indigo-100/50 to-transparent animate-sweep" />
         )}
-        <Icon name="upload" className="h-7 w-7 mx-auto mb-2 text-charcoal/70" />
-        <p className="ss-display text-sm text-ink">
+        <Icon name="upload" className="h-7 w-7 mx-auto mb-2 text-slate-300" />
+        <p className="text-sm font-semibold text-slate-900">
           {uploading ? t('uploader.extracting') : t('compare.uploadNew')}
         </p>
-        <p className="ss-eyebrow mt-1 text-charcoal/70">{t('uploader.browseHint')}</p>
+        <p className="text-[10px] font-medium text-slate-400 uppercase tracking-wider mt-1">{t('uploader.browseHint')}</p>
         <input
           ref={inputRef}
           type="file"

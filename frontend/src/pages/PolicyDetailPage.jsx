@@ -18,7 +18,7 @@ const PolicyDetailPage = () => {
   const [editing, setEditing] = useState(false);
 
   if (isLoading) return <Spinner />;
-  if (!policy) return <p className="text-charcoal">{t('policyDetail.notFound')}</p>;
+  if (!policy) return <p className="text-slate-500">{t('policyDetail.notFound')}</p>;
 
   const save = (data) => update.mutate(data, { onSuccess: () => setEditing(false) });
 
@@ -34,11 +34,11 @@ const PolicyDetailPage = () => {
           </>
         }
       />
-      <div className="ss-card p-5">
+      <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-card">
         <div className="flex items-center justify-between mb-3">
-          <h3 className="font-semibold text-ink">{t('policyDetail.frozenRules')}</h3>
+          <h3 className="font-semibold text-slate-900">{t('policyDetail.frozenRules')}</h3>
           <div className="flex items-center gap-2">
-            {policy.manuallyEdited && <span className="ss-tag text-taupe border-taupe/40">{t('policyDetail.edited')}</span>}
+            {policy.manuallyEdited && <span className="ss-tag text-amber-600 bg-amber-50">{t('policyDetail.edited')}</span>}
             {policy.frozen && <span className="ss-tag"><Icon name="lock" className="h-3 w-3" /> {t('policyDetail.immutable')}</span>}
           </div>
         </div>

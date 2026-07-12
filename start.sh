@@ -9,6 +9,13 @@
 # and ports stay stable across runs). `docker stack deploy` is idempotent.
 set -euo pipefail
 
+# Ensure Homebrew paths are available in non-interactive shells.
+if [ -d /opt/homebrew/bin ]; then
+  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+elif [ -d /usr/local/bin ]; then
+  export PATH="/usr/local/bin:$PATH"
+fi
+
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$ROOT"
 

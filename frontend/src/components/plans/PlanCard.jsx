@@ -13,23 +13,23 @@ export const PlanCard = ({ plan, current, onUpgrade, busy }) => {
   ];
 
   return (
-    <div className={`ss-card p-6 flex flex-col ${current ? 'border-taupe ring-1 ring-taupe/30' : ''}`}>
+    <div className={`bg-white border rounded-2xl p-6 flex flex-col shadow-card ${current ? 'border-indigo-300 ring-1 ring-indigo-500/20' : 'border-slate-200'}`}>
       <div className="flex items-center justify-between">
-        <p className="ss-display text-xl text-ink">{plan.name}</p>
-        {current && <span className="ss-tag text-taupe border-taupe/40">{t('plans.current')}</span>}
+        <p className="text-lg font-semibold text-slate-900">{plan.name}</p>
+        {current && <span className="ss-tag text-indigo-600 bg-indigo-50">{t('plans.current')}</span>}
       </div>
 
       <p className="mt-2">
-        <span className="ss-display text-[28px] text-ink">{money(plan.price)}</span>
-        {plan.price > 0 && <span className="text-sm text-charcoal"> · {t('plans.oneTime')}</span>}
+        <span className="text-2xl font-semibold text-slate-900">{money(plan.price)}</span>
+        {plan.price > 0 && <span className="text-sm text-slate-500"> · {t('plans.oneTime')}</span>}
       </p>
-      {plan.description && <p className="text-sm text-charcoal mt-1">{plan.description}</p>}
+      {plan.description && <p className="text-sm text-slate-500 mt-1">{plan.description}</p>}
 
       <ul className="mt-4 space-y-2">
         {FEATURES.map(([key, label]) => (
-          <li key={key} className="flex items-center gap-2 text-sm text-charcoal">
-            <Icon name="check" className="h-4 w-4 text-softgreen shrink-0" />
-            <span className="font-mono tabular-nums text-ink">{cap(plan.limits?.[key])}</span> {label}
+          <li key={key} className="flex items-center gap-2 text-sm text-slate-500">
+            <Icon name="check" className="h-4 w-4 text-emerald-600 shrink-0" />
+            <span className="font-mono tabular-nums text-slate-900">{cap(plan.limits?.[key])}</span> {label}
           </li>
         ))}
       </ul>

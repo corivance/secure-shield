@@ -36,16 +36,16 @@ export const RuleList = ({ rules = [] }) => {
     }
   };
 
-  if (!rules.length) return <p className="text-charcoal text-sm">{t('ruleList.noRules')}</p>;
+  if (!rules.length) return <p className="text-slate-400 text-sm">{t('ruleList.noRules')}</p>;
   return (
-    <ul className="divide-y divide-gray">
+    <ul className="divide-y divide-slate-100">
       {rules.map((rule, i) => (
         <li key={i} className="py-3 flex items-start justify-between gap-4">
           <div>
-            <span className="text-[11px] uppercase tracking-wide text-charcoal">{t(`ruleTypes.${rule.type}`, rule.type)}</span>
-            <p className="text-sm text-ink">{describe(rule)}</p>
+            <span className="text-[11px] font-medium uppercase tracking-wider text-slate-400">{t(`ruleTypes.${rule.type}`, rule.type)}</span>
+            <p className="text-sm text-slate-700">{describe(rule)}</p>
           </div>
-          {rule.clauseRef && <span className="text-[11px] text-charcoal whitespace-nowrap">{formatClauseRef(rule.clauseRef) || t('ruleList.clause', { ref: rule.clauseRef })}</span>}
+          {rule.clauseRef && <span className="text-[11px] text-slate-400 whitespace-nowrap">{formatClauseRef(rule.clauseRef) || t('ruleList.clause', { ref: rule.clauseRef })}</span>}
         </li>
       ))}
     </ul>

@@ -2,8 +2,6 @@ import { createContext, useCallback, useContext, useRef, useState } from 'react'
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 
-// Centralized confirmation dialog. All confirmations go through `await confirm(...)`
-// from this context — never window.confirm or component-specific modals.
 const ConfirmContext = createContext(null);
 
 export const useConfirm = () => {
@@ -17,7 +15,6 @@ export const ConfirmProvider = ({ children }) => {
   const [dialog, setDialog] = useState(null);
   const resolver = useRef(null);
 
-  // Returns a Promise<boolean> that resolves when the user confirms/cancels.
   const confirm = useCallback((options = {}) => {
     setDialog({
       title: options.title || t('confirm.title'),
@@ -44,22 +41,22 @@ export const ConfirmProvider = ({ children }) => {
       {children}
       {dialog && createPortal(
         <div
-          className="fixed inset-0 z-50 overflow-y-auto bg-ink/40 backdrop-blur-md animate-rise"
+          className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/50 animate-rise"
           role="dialog"
           aria-modal="true"
           onClick={() => close(false)}
         >
           <div className="flex min-h-full items-center justify-center p-4">
-            <div className="ss-card w-full max-w-lg p-6" onClick={(e) => e.stopPropagation()}>
+            <div className="bg-white w-full max-w-lg p-6 rounded-2xl shadow-modal" onClick={(e) => e.stopPropagation()}>
               <p className="ss-eyebrow mb-2">{t('confirm.confirm')}</p>
-              <h2 className="ss-display text-xl text-ink">{dialog.title}</h2>
-              {dialog.message && <p className="text-sm text-charcoal mt-2 leading-relaxed">{dialog.message}</p>}
+              <h2 className="text-lg font-semibold text-slate-900">{dialog.title}</h2>
+              {dialog.message && <p className="text-sm text-slate-500 mt-2 leading-relaxed">{dialog.message}</p>}
               <div className="mt-6 flex justify-end gap-2">
                 <button className="ss-btn-ghost" onClick={() => close(false)}>
                   {dialog.cancelLabel}
                 </button>
                 <button
-                  className={dialog.tone === 'danger' ? 'ss-btn bg-taupe text-white hover:bg-ink' : 'ss-btn-primary'}
+                  className={dialog.tone === 'danger' ? 'ss-btn bg-red-600 text-white hover:bg-red-700' : 'ss-btn-primary'}
                   onClick={() => close(true)}
                 >
                   {dialog.confirmLabel}

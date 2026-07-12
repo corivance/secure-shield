@@ -14,15 +14,15 @@ const UsageBar = ({ label, used, limit }) => {
   return (
     <div>
       <div className="flex items-center justify-between text-sm">
-        <span className="text-charcoal">{label}</span>
-        <span className="font-mono tabular-nums text-ink">
+        <span className="text-slate-500">{label}</span>
+        <span className="font-mono tabular-nums text-slate-900">
           {used}
           {unlimited ? '' : ` / ${limit}`}
         </span>
       </div>
-      <div className="mt-1.5 h-1.5 rounded-full bg-gray/50 overflow-hidden">
+      <div className="mt-1.5 h-1.5 rounded-full bg-slate-100 overflow-hidden">
         <div
-          className={`h-full rounded-full ${pct >= 100 ? 'bg-taupe' : 'bg-softgreen'}`}
+          className={`h-full rounded-full ${pct >= 100 ? 'bg-red-500' : 'bg-indigo-600'}`}
           style={{ width: unlimited ? '12%' : `${pct}%` }}
         />
       </div>
@@ -66,7 +66,7 @@ const PlansPage = () => {
       ) : (
         <div className="space-y-6">
           {current && (
-            <div className="ss-card p-6">
+            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-card">
               <div className="flex items-center justify-between mb-4">
                 <p className="ss-eyebrow">{t('plans.yourUsage', { plan: current.name })}</p>
               </div>

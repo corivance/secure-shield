@@ -21,7 +21,7 @@ const LoginPage = () => {
     <AuthCard
       title={t('auth.welcomeBack')}
       subtitle={t('auth.signInTo')}
-      footer={<>{t('auth.noAccount')} <Link className="text-taupe font-medium" to="/signup">{t('auth.createOne')}</Link></>}
+      footer={<>{t('auth.noAccount')} <Link className="text-indigo-600 font-medium hover:text-indigo-700" to="/signup">{t('auth.createOne')}</Link></>}
     >
       <form onSubmit={submit} className="space-y-4">
         <ErrorBanner error={login.error} />

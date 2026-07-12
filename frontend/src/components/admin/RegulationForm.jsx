@@ -42,7 +42,7 @@ export const RegulationForm = ({ regulation, onClose }) => {
           <div>
             <label className="ss-label">{t('admin.regulations.fieldCode')}</label>
             <input className="ss-input" value={form.code} onChange={set('code')} placeholder={t('admin.regulations.fieldCodePlaceholder')} />
-            <p className="text-[11px] text-charcoal/60 mt-1">{t('admin.regulations.fieldCodeHelp')}</p>
+            <p className="text-[11px] text-slate-400 mt-1">{t('admin.regulations.fieldCodeHelp')}</p>
           </div>
         </div>
         <div>
@@ -53,7 +53,7 @@ export const RegulationForm = ({ regulation, onClose }) => {
           <div>
             <label className="ss-label">{t('admin.regulations.fieldRef')}</label>
             <input className="ss-input" value={form.ref} onChange={set('ref')} placeholder="IRDAI/HLT/CIR/MISC/…" />
-            <p className="text-[11px] text-charcoal/60 mt-1">{t('admin.regulations.fieldRefHelp')}</p>
+            <p className="text-[11px] text-slate-400 mt-1">{t('admin.regulations.fieldRefHelp')}</p>
           </div>
           <div>
             <label className="ss-label">{t('admin.regulations.fieldSource')}</label>
@@ -82,7 +82,7 @@ export const RegulationForm = ({ regulation, onClose }) => {
                   type="button"
                   key={rt}
                   onClick={() => toggleApplies(rt)}
-                  className={`ss-tag ${form.appliesTo.includes(rt) ? 'border-taupe text-taupe bg-paleblue/50' : ''}`}
+                  className={`ss-tag ${form.appliesTo.includes(rt) ? 'bg-indigo-50 text-indigo-600 ring-1 ring-indigo-300' : ''}`}
                 >
                   {t(`ruleTypes.${rt}`)}
                 </button>
@@ -90,8 +90,8 @@ export const RegulationForm = ({ regulation, onClose }) => {
             </div>
           </div>
         )}
-        <label className="flex items-center gap-2 text-sm text-charcoal">
-          <input type="checkbox" checked={form.enabled} onChange={(e) => setForm((f) => ({ ...f, enabled: e.target.checked }))} />
+        <label className="flex items-center gap-2 text-sm text-slate-500">
+          <input type="checkbox" checked={form.enabled} onChange={(e) => setForm((f) => ({ ...f, enabled: e.target.checked }))} className="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" />
           {t('admin.regulations.enabledHelp')}
         </label>
         <div className="flex justify-end gap-2 pt-2">

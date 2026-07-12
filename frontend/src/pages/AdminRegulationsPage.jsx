@@ -16,7 +16,6 @@ const AdminRegulationsPage = () => {
   const { data: regulations, isLoading, error } = useAdminRegulations();
   const del = useDeleteRegulation();
   const confirm = useConfirm();
-  // null = closed, 'new' = create, object = edit
   const [editing, setEditing] = useState(null);
   const [viewing, setViewing] = useState(null);
   const [showUpdates, setShowUpdates] = useState(false);
@@ -55,24 +54,24 @@ const AdminRegulationsPage = () => {
       ) : regulations?.length ? (
         <div className="space-y-3 mt-2">
           {regulations.map((r) => (
-            <div key={r.id} className="ss-card p-5">
+            <div key={r.id} className="bg-white border border-slate-200 rounded-2xl p-5 shadow-card">
               <div className="flex items-start justify-between gap-4">
                 <div className="min-w-0">
                   <div className="flex flex-wrap items-center gap-2">
-                    <p className="ss-display text-[17px] text-ink">{r.title}</p>
-                    <span className={`ss-tag ${r.category === 'info' ? '' : 'text-taupe border-taupe/40'}`}>{r.category === 'info' ? t('admin.regulations.categoryInfo') : t('admin.regulations.categoryRule')}</span>
-                    {!r.enabled && <span className="ss-tag text-charcoal/60">{t('common.disabled')}</span>}
+                    <p className="text-base font-semibold text-slate-900">{r.title}</p>
+                    <span className={`ss-tag ${r.category === 'info' ? '' : 'bg-indigo-50 text-indigo-600'}`}>{r.category === 'info' ? t('admin.regulations.categoryInfo') : t('admin.regulations.categoryRule')}</span>
+                    {!r.enabled && <span className="ss-tag">{t('common.disabled')}</span>}
                   </div>
                   {r.ref && (
-                    <p className="font-mono text-[11px] text-charcoal/70 mt-1">{r.ref}</p>
+                    <p className="font-mono text-[11px] text-slate-400 mt-1">{r.ref}</p>
                   )}
-                  <p className="text-sm text-charcoal mt-1.5 leading-relaxed">{r.text}</p>
+                  <p className="text-sm text-slate-500 mt-1.5 leading-relaxed">{r.text}</p>
                   <div className="flex flex-wrap items-center gap-2 mt-2">
                     {(r.appliesTo || []).map((t) => (
-                      <span key={t} className="font-mono text-[10.5px] text-charcoal/70">#{t}</span>
+                      <span key={t} className="font-mono text-[10.5px] text-slate-400">#{t}</span>
                     ))}
-                    {r.code && <span className="font-mono text-[10.5px] text-charcoal/50">{t('admin.regulations.labelPrefix', { code: r.code })}</span>}
-                    {r.effective && <span className="font-mono text-[10.5px] text-charcoal/50">{t('admin.regulations.effPrefix', { date: r.effective })}</span>}
+                    {r.code && <span className="font-mono text-[10.5px] text-slate-400">{t('admin.regulations.labelPrefix', { code: r.code })}</span>}
+                    {r.effective && <span className="font-mono text-[10.5px] text-slate-400">{t('admin.regulations.effPrefix', { date: r.effective })}</span>}
                   </div>
                 </div>
                 <div className="flex shrink-0 gap-2">
@@ -80,7 +79,7 @@ const AdminRegulationsPage = () => {
                     <Icon name="eye" className="h-4 w-4" /> {t('common.view')}
                   </button>
                   <button className="ss-btn-secondary py-1.5 px-3" onClick={() => setEditing(r)}>{t('common.edit')}</button>
-                  <button className="ss-btn-ghost py-1.5 px-3 text-taupe" onClick={() => onDelete(r)} disabled={del.isPending}>
+                  <button className="ss-btn-ghost py-1.5 px-3 text-red-500" onClick={() => onDelete(r)} disabled={del.isPending}>
                     {t('common.delete')}
                   </button>
                 </div>

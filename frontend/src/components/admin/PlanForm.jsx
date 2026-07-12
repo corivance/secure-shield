@@ -15,7 +15,7 @@ const LimitField = ({ label, value, onChange }) => {
     <div>
       <label className="ss-label">{label}</label>
       <input className="ss-input" type="number" value={value} onChange={onChange} />
-      <p className="text-[11px] text-charcoal/60 mt-1">{t('admin.plans.unlimitedHint')}</p>
+      <p className="text-[11px] text-slate-400 mt-1">{t('admin.plans.unlimitedHint')}</p>
     </div>
   );
 };
@@ -99,12 +99,12 @@ export const PlanForm = ({ plan, onClose }) => {
         </div>
 
         <div className="flex flex-wrap gap-5">
-          <label className="flex items-center gap-2 text-sm text-charcoal">
-            <input type="checkbox" checked={form.enabled} onChange={(e) => setForm((f) => ({ ...f, enabled: e.target.checked }))} />
+          <label className="flex items-center gap-2 text-sm text-slate-500">
+            <input type="checkbox" checked={form.enabled} onChange={(e) => setForm((f) => ({ ...f, enabled: e.target.checked }))} className="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" />
             {t('admin.plans.enabled')}
           </label>
-          <label className="flex items-center gap-2 text-sm text-charcoal">
-            <input type="checkbox" checked={form.isDefault} onChange={(e) => setForm((f) => ({ ...f, isDefault: e.target.checked }))} />
+          <label className="flex items-center gap-2 text-sm text-slate-500">
+            <input type="checkbox" checked={form.isDefault} onChange={(e) => setForm((f) => ({ ...f, isDefault: e.target.checked }))} className="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" />
             {t('admin.plans.defaultSignups')}
           </label>
         </div>

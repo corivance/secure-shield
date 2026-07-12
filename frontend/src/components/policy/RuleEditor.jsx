@@ -6,7 +6,6 @@ import { Icon } from '../common/Icon.jsx';
 
 const TYPE_VALUES = ['room_rent', 'sub_limit', 'waiting_period', 'co_pay', 'deductible', 'exclusion'];
 
-// DB rule → editor row (basis derived for room_rent).
 const toRow = (r) => ({
   type: r.type || 'sub_limit',
   label: r.label || '',
@@ -17,7 +16,6 @@ const toRow = (r) => ({
 
 const blankRow = () => ({ type: 'sub_limit', label: '', clauseRef: '', basis: 'percent', params: {} });
 
-// Editor row → API rule shape (validated again server-side).
 const serialize = (r) => {
   const params = {};
   switch (r.type) {
@@ -164,8 +162,8 @@ export const RuleEditor = ({ policy, onClose, onSave, busy, error }) => {
       <form onSubmit={submit} className="space-y-5">
         <ErrorBanner error={error} />
 
-        <p className="text-xs text-charcoal/70 leading-relaxed">
-          <Trans i18nKey="ruleEditor.intro" components={{ ink: <span className="text-ink" /> }} />
+        <p className="text-xs text-slate-400 leading-relaxed">
+          <Trans i18nKey="ruleEditor.intro" components={{ ink: <span className="text-slate-900" /> }} />
         </p>
 
         <div className="grid sm:grid-cols-3 gap-4">
@@ -192,13 +190,13 @@ export const RuleEditor = ({ policy, onClose, onSave, busy, error }) => {
           </div>
 
           {rows.length === 0 ? (
-            <p className="text-sm text-charcoal/70 border border-dashed border-gray rounded-xl px-4 py-6 text-center">
+            <p className="text-sm text-slate-400 border border-dashed border-slate-200 rounded-xl px-4 py-6 text-center">
               {t('ruleEditor.noRules')}
             </p>
           ) : (
             <div className="space-y-3">
               {rows.map((row, i) => (
-                <div key={i} className="rounded-xl border border-gray/70 bg-paleblue/10 p-4">
+                <div key={i} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
                   <div className="flex items-start gap-3">
                     <div className="flex flex-wrap gap-3 flex-1">
                       <Field label={t('ruleEditor.type')}>
@@ -210,7 +208,7 @@ export const RuleEditor = ({ policy, onClose, onSave, busy, error }) => {
                     </div>
                     <button
                       type="button"
-                      className="ss-btn-ghost p-2 text-taupe shrink-0 mt-6"
+                      className="ss-btn-ghost p-2 text-red-500 shrink-0 mt-6"
                       onClick={() => removeRow(i)}
                       aria-label={t('ruleEditor.removeRule')}
                     >

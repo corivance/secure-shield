@@ -7,13 +7,13 @@ const money = (n) => `₹${Number(n || 0).toLocaleString('en-IN')}`;
 export const PolicyCard = ({ policy, onDelete }) => {
   const { t } = useTranslation();
   return (
-    <div className="ss-card ss-interactive group p-5 flex flex-col h-full">
+    <div className="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col h-full hover:border-slate-300 hover:shadow-soft transition-all duration-200 group">
       <div className="flex items-start justify-between gap-2">
         <div className="min-w-0">
-          <Link to={`/policies/${policy._id}`} className="ss-display text-[18px] text-ink hover:text-taupe truncate block">
+          <Link to={`/policies/${policy._id}`} className="text-base font-semibold text-slate-900 hover:text-indigo-600 truncate block">
             {policy.planName}
           </Link>
-          <p className="text-sm text-charcoal mt-0.5 truncate">{policy.insurer}</p>
+          <p className="text-sm text-slate-500 mt-0.5 truncate">{policy.insurer}</p>
         </div>
         <div className="flex items-center gap-1.5 shrink-0">
           {policy.frozen && (
@@ -23,7 +23,7 @@ export const PolicyCard = ({ policy, onDelete }) => {
             <button
               type="button"
               onClick={() => onDelete(policy)}
-              className="grid h-7 w-7 place-items-center rounded-lg text-charcoal/50 hover:text-taupe hover:bg-paleblue/50 transition-colors"
+              className="grid h-7 w-7 place-items-center rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 transition-colors"
               title={t('policies.deletePolicy')}
               aria-label={t('policies.deletePolicy')}
             >
@@ -38,15 +38,15 @@ export const PolicyCard = ({ policy, onDelete }) => {
       <div className="flex items-center justify-between mt-auto">
         <div>
           <p className="ss-eyebrow">{t('policies.sumInsured')}</p>
-          <p className="font-mono text-sm text-ink tabular-nums mt-1">{money(policy.sumInsured)}</p>
+          <p className="font-mono text-sm text-slate-900 tabular-nums mt-1">{money(policy.sumInsured)}</p>
         </div>
         <div>
           <p className="ss-eyebrow">{t('policies.rules')}</p>
-          <p className="font-mono text-sm text-ink tabular-nums mt-1">{(policy.rules || []).length}</p>
+          <p className="font-mono text-sm text-slate-900 tabular-nums mt-1">{(policy.rules || []).length}</p>
         </div>
         <Link
           to={`/policies/${policy._id}`}
-          className="self-end inline-flex items-center gap-1 font-mono text-[11px] uppercase tracking-eyebrow text-taupe hover:text-ink"
+          className="self-end inline-flex items-center gap-1 text-xs font-medium text-indigo-600 hover:text-indigo-700"
         >
           {t('common.view')} <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
         </Link>

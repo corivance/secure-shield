@@ -108,23 +108,23 @@ export const GettingStartedSteps = () => {
   return (
     <div className="space-y-4">
       {STEPS.map((step) => (
-        <div key={step.n} className="ss-card p-6">
+        <div key={step.n} className="bg-white border border-slate-200 rounded-2xl p-6 shadow-card">
           <div className="flex items-start gap-5">
-            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-paleblue/60 text-taupe border border-gray/50 font-mono text-sm">
+            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-slate-100 text-slate-600 border border-slate-200 font-mono text-sm">
               {step.n}
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-3">
-                <Icon name={step.icon} className="h-5 w-5 text-taupe shrink-0" />
-                <h3 className="ss-display text-[19px] text-ink">{t(step.titleKey)}</h3>
+                <Icon name={step.icon} className="h-5 w-5 text-indigo-600 shrink-0" />
+                <h3 className="text-base font-semibold text-slate-900">{t(step.titleKey)}</h3>
               </div>
-              <p className="text-sm text-charcoal mt-2 leading-relaxed">{t(step.descKey)}</p>
+              <p className="text-sm text-slate-500 mt-2 leading-relaxed">{t(step.descKey)}</p>
 
               {step.tips.length > 0 && (
                 <ul className="mt-3 space-y-1.5">
                   {step.tips.map((tip, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-charcoal">
-                      <span className="text-softgreen mt-1 shrink-0">•</span>
+                    <li key={i} className="flex items-start gap-2 text-sm text-slate-500">
+                      <span className="text-emerald-600 mt-1 shrink-0">•</span>
                       <span>{t(tip.key)}</span>
                     </li>
                   ))}
@@ -134,7 +134,7 @@ export const GettingStartedSteps = () => {
               {step.link && (
                 <Link
                   to={step.link}
-                  className="mt-4 inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-eyebrow text-taupe hover:text-ink"
+                  className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-indigo-600 hover:text-indigo-700"
                 >
                   {t(step.linkKey)}
                   <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>

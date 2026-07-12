@@ -37,10 +37,9 @@ const PoliciesPage = () => {
     <div>
       <PageHeader title={t('policies.title')} subtitle={t('policies.subtitle')} />
 
-      {/* Pre-upload: is AI-assisted extraction available? */}
       <div
         className={`mb-4 flex items-start gap-2.5 rounded-xl border px-4 py-2.5 text-sm ${
-          llmReady ? 'border-softgreen/40 bg-softgreen/10 text-softgreen' : 'border-beige/50 bg-beige/15 text-taupe'
+          llmReady ? 'border-emerald-200 bg-emerald-50 text-emerald-700' : 'border-amber-200 bg-amber-50 text-amber-700'
         }`}
       >
         <Icon name={llmReady ? 'check' : 'alert'} className="h-4 w-4 mt-0.5 shrink-0" />
@@ -57,7 +56,7 @@ const PoliciesPage = () => {
         {uploaded && !upload.isPending && (
           <div
             className={`mt-3 rounded-xl border px-4 py-2.5 text-sm ${
-              ruleCount > 0 ? 'border-softgreen/40 bg-softgreen/10 text-softgreen' : 'border-beige/50 bg-beige/15 text-taupe'
+              ruleCount > 0 ? 'border-emerald-200 bg-emerald-50 text-emerald-700' : 'border-amber-200 bg-amber-50 text-amber-700'
             }`}
           >
             {ruleCount > 0 ? (

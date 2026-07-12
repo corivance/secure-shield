@@ -7,13 +7,13 @@ export const NotificationList = ({ notifications = [], onSelect, dividers = true
   if (!notifications.length) {
     return (
       <div className="px-4 py-10 text-center">
-        <Icon name="bell" className="h-7 w-7 mx-auto mb-2 text-charcoal/40" />
-        <p className="ss-eyebrow text-charcoal/70">{t('notifications.empty')}</p>
+        <Icon name="bell" className="h-7 w-7 mx-auto mb-2 text-slate-300" />
+        <p className="ss-eyebrow">{t('notifications.empty')}</p>
       </div>
     );
   }
   return (
-    <ul className={dividers ? 'divide-y divide-gray/40' : ''}>
+    <ul className={dividers ? 'divide-y divide-slate-100' : ''}>
       {notifications.map((n) => (
         <li key={n._id}>
           <NotificationItem notification={n} onSelect={onSelect} />

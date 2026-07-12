@@ -41,7 +41,7 @@ const NotificationsPage = () => {
       {isLoading ? (
         <Spinner />
       ) : (
-        <div className="ss-card overflow-hidden">
+        <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-card">
           <NotificationList notifications={notifications} onSelect={onSelect} dividers />
         </div>
       )}

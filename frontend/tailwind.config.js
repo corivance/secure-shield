@@ -3,33 +3,33 @@ export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
-      // ONLY the sanctioned SecureShield palette (see CLAUDE.MD). Lightening is
-      // done with opacity utilities — never with new hex values.
       colors: {
-        ink: '#000000', // Black
-        charcoal: '#73787C', // Charcoal
-        gray: { DEFAULT: '#C5C6C7' }, // Gray
-        paleblue: '#D7E5F0', // Pale Blue
-        beige: '#C9AD93', // Beige
-        taupe: '#554940', // Taupe
-        softgreen: '#879A77', // Soft Green
+        primary: '#4F46E5',
+        ink: '#1E293B',
+        charcoal: '#64748B',
+        muted: '#94A3B8',
+        border: '#E2E8F0',
+        surface: '#F8FAFC',
+        softgreen: '#879A77',
+        beige: '#C9AD93',
+        taupe: '#554940',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        // Geometric, minimalist display (swap to Montserrat/Lato here if preferred).
         display: ['Poppins', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
-      letterSpacing: { tightish: '-0.02em', eyebrow: '0.22em' },
+      letterSpacing: { tightish: '-0.02em', eyebrow: '0.12em' },
       boxShadow: {
-        soft: '0 1px 2px rgba(0,0,0,0.03), 0 14px 34px -20px rgba(85,73,64,0.28)',
-        lift: '0 2px 6px rgba(0,0,0,0.04), 0 28px 54px -22px rgba(85,73,64,0.42)',
-        inset: 'inset 0 1px 0 rgba(255,255,255,0.6)',
+        soft: '0 1px 3px rgba(0,0,0,0.04), 0 4px 20px rgba(0,0,0,0.02)',
+        card: '0 4px 20px rgba(0,0,0,0.02)',
+        lift: '0 8px 30px rgba(0,0,0,0.06)',
+        modal: '0 20px 60px rgba(0,0,0,0.15)',
       },
-      borderRadius: { '4xl': '28px' },
+      borderRadius: { '2xl': '1rem', '3xl': '1.25rem' },
       keyframes: {
         rise: {
-          '0%': { opacity: '0', transform: 'translateY(10px)' },
+          '0%': { opacity: '0', transform: 'translateY(8px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
         dot: {
@@ -42,7 +42,7 @@ export default {
         },
       },
       animation: {
-        rise: 'rise 0.55s cubic-bezier(0.2,0.7,0.2,1) both',
+        rise: 'rise 0.3s ease-out both',
         dot: 'dot 1.8s ease-in-out infinite',
         sweep: 'sweep 2.4s ease-in-out infinite',
       },

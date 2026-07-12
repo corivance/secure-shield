@@ -10,7 +10,6 @@ const ChatPage = () => {
   const { data: messages = [] } = useChatHistory();
   const ask = useAskChat();
 
-  // Newest-first from the API → show oldest-first in the thread.
   const ordered = [...messages].reverse();
 
   return (

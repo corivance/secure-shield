@@ -10,9 +10,9 @@ import { useAdminUsers, useDeleteUser } from '../hooks/useAdmin.js';
 import { currentUserAtom } from '../store/authAtom.js';
 
 const ROLE_CLASS = {
-  'super-admin': 'bg-taupe/15 text-taupe border-taupe/40',
-  reviewer: 'bg-softgreen/15 text-softgreen border-softgreen/40',
-  member: 'bg-paleblue/60 text-charcoal border-gray/60',
+  'super-admin': 'bg-indigo-50 text-indigo-600',
+  reviewer: 'bg-emerald-50 text-emerald-600',
+  member: 'bg-slate-100 text-slate-600',
 };
 
 const AdminUsersPage = () => {
@@ -59,32 +59,32 @@ const AdminUsersPage = () => {
       {isLoading ? (
         <Spinner />
       ) : (
-        <div className="ss-card overflow-x-auto mt-2">
+        <div className="bg-white border border-slate-200 rounded-2xl overflow-x-auto shadow-card">
           <table className="w-full text-sm min-w-[680px]">
             <thead>
-              <tr className="border-b border-gray/60">
-                <th className="text-left px-5 py-3 ss-eyebrow font-normal">{t('admin.users.colUser')}</th>
-                <th className="text-left px-5 py-3 ss-eyebrow font-normal">{t('admin.users.colRole')}</th>
-                <th className="text-left px-5 py-3 ss-eyebrow font-normal">{t('admin.users.colPlan')}</th>
-                <th className="text-right px-5 py-3 ss-eyebrow font-normal">{t('admin.users.colActions')}</th>
+              <tr className="border-b border-slate-200">
+                <th className="text-left px-5 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">{t('admin.users.colUser')}</th>
+                <th className="text-left px-5 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">{t('admin.users.colRole')}</th>
+                <th className="text-left px-5 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">{t('admin.users.colPlan')}</th>
+                <th className="text-right px-5 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">{t('admin.users.colActions')}</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray/40">
+            <tbody className="divide-y divide-slate-100">
               {filtered.map((u) => (
-                <tr key={u.id} className="hover:bg-paleblue/20 transition-colors">
+                <tr key={u.id} className="hover:bg-slate-50 transition-colors">
                   <td className="px-5 py-3">
-                    <p className="font-medium text-ink">{u.fullName}</p>
-                    <p className="font-mono text-[12px] text-charcoal">{u.email}</p>
+                    <p className="font-medium text-slate-900">{u.fullName}</p>
+                    <p className="font-mono text-[12px] text-slate-500">{u.email}</p>
                   </td>
                   <td className="px-5 py-3">
                     <span className={`ss-tag ${ROLE_CLASS[u.roleSlug] || ROLE_CLASS.member}`}>{u.roleSlug}</span>
                   </td>
-                  <td className="px-5 py-3 capitalize text-charcoal">{u.plan}</td>
+                  <td className="px-5 py-3 capitalize text-slate-500">{u.plan}</td>
                   <td className="px-5 py-3">
                     <div className="flex justify-end gap-2">
                       <button className="ss-btn-secondary py-1.5 px-3" onClick={() => setEditing(u)}>{t('common.edit')}</button>
                       <button
-                        className="ss-btn-ghost py-1.5 px-3 text-taupe disabled:opacity-40"
+                        className="ss-btn-ghost py-1.5 px-3 text-red-500 disabled:opacity-40"
                         onClick={() => onDelete(u)}
                         disabled={u.id === me?.id || del.isPending}
                         title={u.id === me?.id ? t('admin.users.cannotDeleteSelf') : t('common.delete')}

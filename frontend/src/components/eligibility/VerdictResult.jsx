@@ -12,12 +12,12 @@ export const VerdictResult = ({ check, onDispute, disputing }) => {
   const { t } = useTranslation();
   return (
     <div className="space-y-6">
-      <div className="ss-card p-7 flex flex-col sm:flex-row items-center gap-7">
+      <div className="bg-white border border-slate-200 rounded-2xl p-7 flex flex-col sm:flex-row items-center gap-7 shadow-card">
         <CoverageRing percent={check.coveragePercent} verdict={check.verdict} size={150} />
         <div className="flex-1 text-center sm:text-left">
           <VerdictBadge verdict={check.verdict} />
-          <p className="ss-display text-[34px] leading-none text-ink mt-4 tabular-nums">{money(check.eligibleAmount)}</p>
-          <p className="text-charcoal text-sm mt-1.5">
+          <p className="text-3xl font-semibold text-slate-900 leading-none mt-4 tabular-nums">{money(check.eligibleAmount)}</p>
+          <p className="text-slate-500 text-sm mt-1.5">
             {t('eligibility.eligibleOf')} <span className="font-mono tabular-nums">{money(check.claimedAmount)}</span> {t('eligibility.claimed')}
           </p>
           {check.verdict !== 'approved' && onDispute && (
@@ -29,9 +29,9 @@ export const VerdictResult = ({ check, onDispute, disputing }) => {
       </div>
 
       {check.explanation && (
-        <div className="ss-card p-6">
+        <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-card">
           <p className="ss-eyebrow mb-3">{t('eligibility.whyVerdict')}</p>
-          <p className="text-charcoal text-[15px] leading-relaxed whitespace-pre-line">{check.explanation}</p>
+          <p className="text-slate-500 text-[15px] leading-relaxed whitespace-pre-line">{check.explanation}</p>
         </div>
       )}
 

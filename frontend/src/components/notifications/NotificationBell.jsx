@@ -33,12 +33,12 @@ export const NotificationBell = () => {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="relative grid h-9 w-9 place-items-center rounded-full border border-gray/70 bg-white/60 text-charcoal hover:border-taupe hover:text-ink transition-colors"
+        className="relative grid h-9 w-9 place-items-center rounded-lg border border-slate-200 bg-white text-slate-500 hover:border-slate-300 hover:text-slate-700 transition-colors"
         aria-label={t('nav.notifications')}
       >
         <Icon name="bell" className="h-[18px] w-[18px]" />
         {unreadCount > 0 && (
-          <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 grid place-items-center rounded-full bg-taupe text-white font-mono text-[10px] leading-none">
+          <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 grid place-items-center rounded-full bg-indigo-600 text-white text-[10px] font-medium leading-none">
             {unreadCount > 9 ? '9+' : unreadCount}
           </span>
         )}
@@ -47,12 +47,12 @@ export const NotificationBell = () => {
       {open && (
         <>
           <div className="fixed inset-0 z-30" onClick={() => setOpen(false)} />
-          <div className="absolute right-0 mt-2 w-[340px] max-w-[calc(100vw-2rem)] z-40 ss-card overflow-hidden animate-rise">
-            <div className="flex items-center justify-between px-4 py-3 border-b border-gray/50">
+          <div className="absolute right-0 mt-2 w-[340px] max-w-[calc(100vw-2rem)] z-40 bg-white border border-slate-200 rounded-xl shadow-lg overflow-hidden animate-rise">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-slate-100">
               <p className="ss-eyebrow">{t('nav.notifications')}</p>
               {unreadCount > 0 && (
                 <button
-                  className="font-mono text-[10.5px] uppercase tracking-eyebrow text-taupe hover:text-ink"
+                  className="text-[10.5px] font-medium text-indigo-600 hover:text-indigo-700 uppercase tracking-wider"
                   onClick={() => markAll.mutate()}
                   disabled={markAll.isPending}
                 >
@@ -64,7 +64,7 @@ export const NotificationBell = () => {
               <NotificationList notifications={recent} onSelect={onSelect} />
             </div>
             <button
-              className="w-full px-4 py-3 border-t border-gray/50 font-mono text-[10.5px] uppercase tracking-eyebrow text-charcoal hover:bg-paleblue/40 hover:text-ink transition-colors"
+              className="w-full px-4 py-3 border-t border-slate-100 text-[10.5px] font-medium text-slate-500 uppercase tracking-wider hover:bg-slate-50 hover:text-slate-700 transition-colors"
               onClick={() => {
                 setOpen(false);
                 navigate('/notifications');
