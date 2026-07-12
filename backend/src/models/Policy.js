@@ -7,7 +7,12 @@ const ruleSchema = new Schema(
   {
     type: {
       type: String,
-      enum: ['room_rent', 'sub_limit', 'waiting_period', 'co_pay', 'deductible', 'exclusion'],
+      enum: [
+        'room_rent', 'sub_limit', 'waiting_period', 'co_pay', 'deductible', 'exclusion',
+        'restoration', 'day_care', 'pre_post_hospital', 'ambulance', 'ayush', 'maternity',
+        'no_claim_bonus', 'organ_donor', 'domiciliary', 'modern_treatments', 'icu_charges',
+        'health_checkup',
+      ],
       required: true,
     },
     label: { type: String, required: true },

@@ -10,7 +10,12 @@ export const irdaiRegulationLookup = ({ ruleType, text } = {}) => {
 
 // rule_validator — validate the extracted rule set and FREEZE it (mark immutable
 // shape). Returns { valid, rules, issues }. Pure, deterministic.
-const VALID_TYPES = ['room_rent', 'sub_limit', 'waiting_period', 'co_pay', 'deductible', 'exclusion'];
+const VALID_TYPES = [
+  'room_rent', 'sub_limit', 'waiting_period', 'co_pay', 'deductible', 'exclusion',
+  'restoration', 'day_care', 'pre_post_hospital', 'ambulance', 'ayush', 'maternity',
+  'no_claim_bonus', 'organ_donor', 'domiciliary', 'modern_treatments', 'icu_charges',
+  'health_checkup',
+];
 
 export const ruleValidator = (rules = []) => {
   const issues = [];
